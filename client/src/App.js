@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import { Route } from 'react-router-dom'
 import { UserList } from './components/UserList'
+import { AddUser } from './components/AddUser'
  
 import './App.css';
 
@@ -23,6 +24,12 @@ function App() {
       rerender={rerender}
       setRerender={setRerender}
       />} />
+      <Route path='/adduser' render={props => <AddUser 
+      {...props}
+      render={rerender}
+      setRerender={setRerender}
+      /> } />
+      
     </div>
   );
 }
