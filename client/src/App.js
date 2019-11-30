@@ -26,10 +26,14 @@ function App() {
       />} />
       <Route path='/adduser' render={props => <AddUser 
       {...props}
-      render={rerender}
+      rerender={rerender}
       setRerender={setRerender}
       /> } />
-      
+      <Route path='/edituser/:id' render={props => <AddUser
+      {...props}
+      rerender={rerender}
+      setRerender={setRerender}
+      />} />
     </div>
   );
 }

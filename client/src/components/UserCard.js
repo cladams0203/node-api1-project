@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 export function UserCard(props) {
 
@@ -20,6 +21,10 @@ export function UserCard(props) {
                 e.preventDefault()
                 handleDelete()
             }}>Delete </button>
+            <Link to={`/edituser/${props.user.id}`}>
+                <button>Edit</button>
+            </Link>
+
         </div>
     )
 }
