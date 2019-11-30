@@ -63,6 +63,24 @@ server.delete('/api/users/:id', (req, res) => {
             res.status(500).json({ error: "The user could not be removed", error: err })
         })
 })
+//PUT edit user endpoint
+server.put('/api/users/:id', (req, res) => {
+    const id = req.params.id
+    const changes = req.body
+    const { name, bio } = changes
+    if(!name || !bio) {
+        res.status(400).json({ errorMessage: "Please provide name and bio for the user." })
+    }
+    db.update(id, changes)
+        .then(user => {
+            user ?
+            res.status(200).json(user) :
+            res.status(404).json({ message: "The user with the specified ID does not exist." })
+        })
+        .catch(err => {
+            res.status(500).json({ error: "The user information could not be modified.", error: err })
+        })
+})
 
 // watching for connections on port 5000
 server.listen(5000, () => {
