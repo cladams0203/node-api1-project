@@ -49,6 +49,20 @@ server.post('/api/users', (req, res) => {
             res.status(500).json({ errorMessage: "Please provide name and bio for the user.", error: err })
         })
 })
+//delete user by id number
+server.delete('/api/users/:id', (req, res) => {
+    const id = req.params.id
+
+    db.remove(id)
+        .then(user => {
+            user ? 
+            res.json(user) :
+            res.status(404).json({ message: "The user with the specified ID does not exist." })
+        })
+        .catch(err => {
+            res.status(500).json({ error: "The user could not be removed", error: err })
+        })
+})
 
 // watching for connections on port 5000
 server.listen(5000, () => {
