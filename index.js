@@ -1,4 +1,5 @@
 // implement your API here
+require('dotenv').config()
 const express = require('express') // import express
 const cors = require('cors') // import cors
 
@@ -86,7 +87,8 @@ server.put('/api/users/:id', (req, res) => {
 })
 
 // watching for connections on port 5000
-server.listen(5000, () => {
-    console.log('running on port 5000')
+const port = process.env.PORT || 5000
+server.listen(port, () => {
+    console.log(`running on port ${port}`)
 })
 
